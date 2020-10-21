@@ -23,3 +23,6 @@ Calls download_youtube_data.py on every line of a specified file (line 6). The r
 
 ## create_data_for_indexing.py
 creates the file data_for_indexing.json which contains the video_id, title, description of all the videos in youtube_data (see last heading)
+
+## create_whoosh_index.py
+Creates a whoosh index from the data file created by create_data_for_indexing.py
