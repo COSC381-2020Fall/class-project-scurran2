@@ -6,7 +6,7 @@ from whoosh.index import create_in
 from whoosh.fields import Schema, TEXT, ID
 
 #ID and TEXT are whoosh data types. Schema are customizeable
-schema = Schema(id = ID(stored=true), title=TEXT(stored=true), description=TEXT(stored=true))
+schema = Schema(id = ID(stored=True), title=TEXT(stored=True), description=TEXT(stored=True))
 
 #create a folder to store the index
 if not os.path.exists("indexdir"):
@@ -18,7 +18,7 @@ writer = ix.writer()
 
 with open('data_for_indexing.json') as f: #file we created
     youtube_array = json.load(f)
-    for item in youtube_array
+    for item in youtube_array:
         writer.add_document(id=item['id'], title=item['title'], description=item['description'])
 
 writer.commit()

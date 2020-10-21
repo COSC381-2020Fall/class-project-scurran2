@@ -5,7 +5,7 @@ import config
 
 my_api_key = config.api_key
 my_cse_id = config.cse_id
-my_search_topic = 'Karpov' #phrase to search in 365 chess
+my_search_topic = 'Karpov' #phrase to search 
 
 def google_search(search_term, api_key, cse_id, **kwargs):
     service = build("customsearch", "v1", developerKey = api_key)

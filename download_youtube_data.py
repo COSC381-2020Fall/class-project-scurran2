@@ -5,8 +5,8 @@ import pprint
 from googleapiclient.discovery import build
 import json
 
-my_api_key = 'AIzaSyAP0Z7Emwtlc9-CdmLtjhzsmZrE51Sig-o'
-my_cse_id = '85a32bc71eb8779f0'
+my_api_key = config.api_key
+my_cse_id = config.cse_id
 video_id = sys.argv[1]
 
 #print(video_id)
