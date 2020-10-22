@@ -1,6 +1,8 @@
+__pycache__
 .vscode
 data_for_indexing.json
 google_search.json
 google_search.txt
-youtube_data.txt
+youtube_data
 data/*
+indexdir

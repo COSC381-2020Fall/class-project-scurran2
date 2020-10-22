@@ -5,13 +5,14 @@ import pprint
 paths = [str(x) for x in Path('./youtube_data').glob('**/*.json')]
 results = []
 for path in paths:
+    print(path)
     with open(path, 'r') as f:
         data = json.load(f)
-
+        video_data = data['items'][0]
         video =  {
-            'id': path[15:24],
-            'title': data[0]['title'],
-            'description':  data[0]['snippet']
+            'id': video_data['id'],
+            'title': video_data['snippet']['title'],
+            'description': video_data['snippet']['description']
         }
         results.append(video)
 

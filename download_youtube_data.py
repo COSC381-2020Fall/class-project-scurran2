@@ -1,24 +1,16 @@
-#!/usr/bin/python
-
-import sys
-import pprint
-from googleapiclient.discovery import build
 import json
+import sys
+from googleapiclient.discovery import build
+import config
 
 my_api_key = config.api_key
-my_cse_id = config.cse_id
-video_id = sys.argv[1]
-
-#print(video_id)
-
-def google_search(search_term, api_key, cse_id, **kwargs):
-    service = build("customsearch", "v1", developerKey = api_key)
-    res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
-    return res['items']
+def youtube_data(video_id):
+    service = build("youtube", "v3", developerKey=my_api_key)
+    result = service.videos().list(part='snippet', id=video_id).execute()
+    return result
 
 if __name__ == '__main__':
-   results = google_search(video_id, my_api_key, my_cse_id, num =1) 
-   out_file = open("./youtube_data/" + video_id + ".json", "w")
-   json.dump(results, out_file, indent = 6)
-   out_file.close()
-   #pprint.pprint(results)
+    video_id = sys.argv[1]
+    result = youtube_data(video_id)
+    with open('youtube_data/' + video_id + '.json', 'w') as f:
+        json.dump(result, f, indent=6)
