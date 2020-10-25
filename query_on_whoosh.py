@@ -29,6 +29,6 @@ def query(query_str, items_per_page=10, current_page=1):
 
 if __name__ == "__main__":
     query_str = sys.argv[1]
-  items_per_page = int(sys.argv[2])
+    items_per_page = int(sys.argv[2])
     current_page = int(sys.argv[3])
     query_results, num_query_results = query(query_str, items_per_page=items_per_page, current_page=current_page)
