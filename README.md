@@ -1,36 +1,23 @@
-# COSC 381 class project README
+# YouTube Description Search Engine
+## Set up
+Python verion: 3.7.9
+1. run `python3 -m pip install -r requirements.txt
+`
+## Retrieves Google Search results
+1. modify config.py to add your api key and cse key
+2. run: `python3 cse.py`
 
-## For both Google and Youtube results, complete the following
+## Retrieves Video Ids from search results
+1. run `python3 parse_search_results.py google_search.json videoids.txt`
 
-### Requirements
+## Retrives YouTube Data
+1. run `python3 download_youtube_data.py videoids.txt`
 
-To make sure you have the required software installed, run the following command in the command prompt:
-python3 -m pip install -r requirements.txt
+## Prepares for Whoosh Index
+1. run `python3 create_data_for_indexing.py`
 
-### Config file
-Initialize the variables api_key and cse_id as strings copy-pasted from your configuration/setup webpages. 
+## Create Whoosh Indexing
+1. run `python3 create_whoosh_index.py`
 
-## Google Search
-
-### cse.py
-Initialize my_search_topic on line 8 with desired search term. Running the script will send the first 100 results to a json file, 'google_search.json'. You can modify the loop and function call on lines 17-18 to output different results, and you can modify the file name on line 19 as you sree fit. Then, run cse.py in the command line with python3. 
-
-## Youtube Search
-
-###  download_youtube_data.py
-Takes search term (preferably a video id) as system argument when the script is called in the command line i.e.
-$ python3 download_youtube_data.py ['video_id']
-The result will be output to a json file specified on line 21. 
-
-If you want to search for several videos at once, don't run this file directly, instead use the next script.
-
-
-### download_youtube_data_batch.sh
-Calls download_youtube_data.py on every line of a specified file (line 6). The resulting json files are added to a folder, youtube_data. Run this script in the command line like this:
-$ sh download_youtube_data_batch.sh
-
-### create_data_for_indexing.py
-creates the file data_for_indexing.json which contains the video_id, title, description of all the videos in youtube_data (see last heading). Run this script after you run download_youtube_data_batch.sh
-
-### create_whoosh_index.py
-Creates a whoosh index from the data file created by create_data_for_indexing.py. Run after you run create_data_for_indexing.py.
+## Query on Whoosh
+1. run `python3 query_on_whoosh.py home 2 1` will output a json-format result
