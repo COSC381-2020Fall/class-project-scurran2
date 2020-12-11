@@ -15,10 +15,11 @@ class HTTPServer_RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b"</head>") 
         
         self.wfile.write(b"<body>")
+        self.wfile.write(b"Hello world!")
         self.wfile.write(b"</body>")
         self.wfile.write(b"</html>")   
 
-port = 8080
+port = 5000
 # 0.0.0.0 means all IP v4 addresses on local machine 
 # i.e. if host (e.g. aws machine) has 2 ip addresses, 
 # server is reachable on both
