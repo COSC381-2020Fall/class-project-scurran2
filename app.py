@@ -21,6 +21,8 @@ def handle_test():
     input = "abc"
     return test_module.test(input)
 
-@app.route("query", strict_slashes = False)
+@app.route("/query", strict_slashes = False)
 def handle_query():
-    return jsonify(query_on_whoosh.query("home"))
+    query = request.args.get("q")
+    page = int(request.args.get("p"))
+    return jsonify({"query term": query, "page": page, "search results": query_on_whoosh.query(query, 10, page)})
