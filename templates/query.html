@@ -1,21 +1,21 @@
 {% extends "layout.html"%}
-    {%block body %}
-        <div> <a href = "about"> "about"</a>
-        <form action = "query_view" method = "get">
-            <input name = "q" type = "text">
-            <input type = "submit" value = "search">
-        </form>
-        {% for item in results %}
-            <p>{{ item.url }}</p>
-            <p>{{ item.description }}</p>
-        {% endfor %}
-        {% for page_index in range(1, page_cnt+1)%}
-            <a href = "query_view?q = {{query_term}}&p = {{page_index}}"> {{page_index}</a>
-            {%endfor%}
-            <ul>
-                {% for history_item in history_list %}
-                <li> {{history_item[0]}}</li>
-                {% endfor %}
-            </ul>
 
-    {%endblock%}
+{% block body %}
+        <div><a href = "about">About</a></div> 
+        <form action = "success" method = "get">
+            <input name = "new_data" type = "text">
+            <input type = "submit" value = "request">
+        </form>
+        <form action = "query_view" method = "get">
+            <input name = "q">
+            <input type = "submit" value = "search">
+        </form>    
+        {% for item in results%}
+        <p>{{item.url}}</p>
+        <p>{{item.description|safe}}</p>
+        {%endfor%}
+
+        {% for page_index in range(1,page_count+1)%}    
+            <a href = "query_view?q={{query_term}}&p={{page_index}}">{{page_index}}</a>
+        {%endfor%}    
+{%endblock%}

@@ -24,7 +24,7 @@ def query(query_str, items_per_page=10, current_page=1):
             query_results.append(d)	            
 
 
-        return query_results	        
+        return query_results, num_query_results	        
 
 
 if __name__ == "__main__":
