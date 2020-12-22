@@ -1,7 +1,19 @@
-<!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <title>hello, title</title>
-    </head>
-    <body>hello {{user_name}}</body>
-</html>
+{% extends "layout.html"%}
+
+{% block body %}
+    <div><a href = "about">About</a></div>
+    <div><a href = "history">History</a></div>  
+    <form action = "success" method = "get">
+        <input name = "new_data" type = "text">
+        <input type = "submit" value = "request">
+    </form>
+    <form action = "query_view" method = "get">
+        <input name = "q">
+        <input type = "submit" value = "search">
+    </form>  
+    <ul>
+        {% for hist_item in history_list %}
+        <li>{{hist_item[1]}}</li> 
+        {%endfor%}    
+    </ul>
+{%endblock%}

@@ -6,9 +6,10 @@ from whoosh.index import create_in
 from whoosh.fields import Schema, TEXT, ID
 from whoosh.analysis import StemmingAnalyzer
 
+stem_analyzer = StemmingAnalyzer()
 
 #ID and TEXT are whoosh data types. Schema are customizeable
-schema = Schema(id = ID(stored=True), title=TEXT(stored=True), description=TEXT(stored=True))
+schema = Schema(id = ID(stored=True), title=TEXT(stored=True), description=TEXT(analyzer = stem_analyzer, stored=True))
 
 #create a folder to store the index
 if not os.path.exists("indexdir"):

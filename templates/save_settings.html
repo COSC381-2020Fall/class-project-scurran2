@@ -1,0 +1,10 @@
+{% extends "layout.html"%}
+
+{% block body %}
+    {%if enabled%}
+    <p>The setting is saved: enable history: {{enabled}}</p>
+    {%else%}
+    <p>The setting is saved: enable history: off</p>
+    {%endif%}
+
+{%endblock%}

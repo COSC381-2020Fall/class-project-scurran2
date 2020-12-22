@@ -1,0 +1,13 @@
+{% extends "layout.html"%}
+
+{% block body %}
+    
+    <form action = "save_settings" method = "get">
+        {%if history_on%}
+            Search History: <input type="checkbox" name="enabled" checked> enabled
+        {%else%}
+            Search History: <input type="checkbox" name="enabled"> enabled
+        {%endif%}        
+        <input type = "submit">
+    </form>
+{%endblock%}

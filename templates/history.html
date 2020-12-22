@@ -1,0 +1,26 @@
+{% extends "layout.html"%}
+
+{% block body %}
+<h1>History</h1>
+<table>
+    <tr>
+        <th align = "left">Topic</th>
+        <th align = "left">Term</th>
+        <th align = "left">Date/Time</th>
+        <th></th>
+    </tr>
+    
+    {% for i in range(history_list|length,-1,-1) %}
+        <tr>
+            {%for item in history_list[i] %}
+                <td>{{item}}</td>  
+            {%endfor%}
+            {% if ids[i]%}
+                <td><a href = "remove_history?id={{ids[i]}}">remove</a></td>
+            {%endif%}    
+        </tr>
+    {%endfor%}    
+    
+</table>
+
+{%endblock%}

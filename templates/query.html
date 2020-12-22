@@ -1,7 +1,9 @@
 {% extends "layout.html"%}
 
 {% block body %}
-        <div><a href = "about">About</a></div> 
+        <div><a href = "about">About</a></div>
+        <div><a href = "settings">Settings</a></div>
+        <div><a href = "history">History</a></div>
         <form action = "success" method = "get">
             <input name = "new_data" type = "text">
             <input type = "submit" value = "request">
@@ -11,11 +13,13 @@
             <input type = "submit" value = "search">
         </form>    
         {% for item in results%}
-        <p>{{item.url}}</p>
+        <p><a href = "{{item.url}}">{{item.url}}</a></p>
         <p>{{item.description|safe}}</p>
         {%endfor%}
 
         {% for page_index in range(1,page_count+1)%}    
             <a href = "query_view?q={{query_term}}&p={{page_index}}">{{page_index}}</a>
-        {%endfor%}    
+        {%endfor%} 
+        
+
 {%endblock%}
